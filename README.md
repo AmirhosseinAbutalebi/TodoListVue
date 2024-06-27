@@ -25,6 +25,6 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Picture from Project
-![]([https://github.com/AmirhosseinAbutalebi/BingwallpaperXFCE/blob/main/Bingwallpaper.gif](https://github.com/AmirhosseinAbutalebi/TodoListVue/blob/main/todoPic-1.png))
+![alt text](https://github.com/AmirhosseinAbutalebi/TodoListVue/blob/main/todoPic-1.png))
 
 
