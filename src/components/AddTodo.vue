@@ -11,18 +11,17 @@
     </div>
 </template>
 
-<script>
-export default {
-  data(){
-    return{
-      title : ""
-    };
-  },
-  methods : {
-    addTodo(){
-      this.$emit("AddNewTodo", this.title);
-      this.title = "";
-    },
-  },
-};
+<script setup>
+import {ref, defineEmits} from "vue";
+
+const title = ref("");
+const emits = defineEmits(['AddNewTodo']);
+
+function addTodo(){
+  if (!title.value)
+    return
+  emits("AddNewTodo", title.value);
+  title.value = "";
+}
+
 </script>

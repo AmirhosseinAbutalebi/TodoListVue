@@ -9,32 +9,30 @@
           <span v-else v-text="todo.title"></span>
         </p>
         <button class="clear" @click="deleteTodo">
-          <img :src="cross" alt="Clear it" />
+          <img :src="CrossImage" alt="Clear it" />
         </button>
       </li>
 </template>
 
-<script>
+<script setup>
+import {defineEmits, defineProps, toRef} from "vue"
 import CrossImage from '../assets/images/icon-cross.svg';
-export default {
-  props : {
-    todo: Object,
-  },
-  data(){
-    return{
-      cross : CrossImage
-    };
-  },
-  methods : {
-    deleteTodo(){
-      if(confirm("آیا از حذف اطمینان دارید ؟ "))
-      {
-        this.$emit("removeTodoById", this.todo.id);
-      }
-    },
-    changeStatus(){
-      this.$emit("changeStatusComplete", this.todo.id, !this.todo.isCompleted) ;
-    },
-  },
-};
+
+const emits = defineEmits(['removeTodoById','changeStatusComplete']);
+
+const props = defineProps({
+  todo : Object,
+});
+
+const todos = toRef(props, "todo");
+
+function deleteTodo(){
+  if(confirm("آیا از حذف اطمینان دارید ؟ "))
+  {
+    emits("removeTodoById", todos.value.id);
+  }
+}
+function changeStatus(){
+  emits("changeStatusComplete", todos.value.id, !todos.value.isCompleted) ;
+}
 </script>
